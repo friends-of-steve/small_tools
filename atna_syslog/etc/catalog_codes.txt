@@ -1,0 +1,2 @@
+(110106:DCM)(ITI-80:IHE Transactions)	XCDR Export
+(110107:DCM)(ITI-80:IHE Transactions)	XCDR Import

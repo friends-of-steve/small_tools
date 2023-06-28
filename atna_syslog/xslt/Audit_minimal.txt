@@ -1,0 +1,1 @@
+File	Message Type	POU Code	Code Sys	Text	Src UserID	Dest UserID
