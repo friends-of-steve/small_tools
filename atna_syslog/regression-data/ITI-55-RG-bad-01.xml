@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AuditMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <EventIdentification EventActionCode="E" EventDateTime="2022-09-30T10:15:15-05:00"
+        EventOutcomeIndicator="8">
+        <EventID csd-code="110112" codeSystemName="DCM" originalText="Query"/>
+        <EventTypeCode csd-code="ITI-55" codeSystemName="IHE Transactions"
+            originalText="Cross Gateway Patient Discovery"/>
+    </EventIdentification>
+    <ActiveParticipant UserID="http://www.w3.org/2005/08/addressing/anonymous"
+        UserIsRequestor="false" NetworkAccessPointTypeCode="1"
+        NetworkAccessPointID="srcNetworkAccessPointId">
+        <RoleIDCode csd-code="110153" codeSystemName="DCM" originalText="Source Role ID"/>
+    </ActiveParticipant>
+    <ActiveParticipant UserID="destUserId" AlternativeUserID="destAltUserId" UserIsRequestor="false"
+        NetworkAccessPointTypeCode="1" NetworkAccessPointID="destNetworkAccessPointId">
+        <RoleIDCode csd-code="110152" codeSystemName="DCM" originalText="Destination Role ID"/>
+    </ActiveParticipant>
+    <AuditSourceIdentification AuditSourceID="auditSourceId"/>
+    <ParticipantObjectIdentification
+        ParticipantObjectID="DEM3349000^^^&amp;amp;1.2.840.114350.1.13.321.1.7.3.688884.100&amp;amp;ISO"
+        ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+        <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881"
+            originalText="Patient Number"/>
+    </ParticipantObjectIdentification>
+    <ParticipantObjectIdentification
+        ParticipantObjectID="DEM3350000^^^&amp;amp;1.2.840.114350.1.13.321.1.7.3.688884.100&amp;amp;ISO"
+        ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+        <ParticipantObjectIDTypeCode csd-code="2" codeSystemName="RFC-3881"
+            originalText="Patient Number"/>
+    </ParticipantObjectIdentification>
+    <ParticipantObjectIdentification ParticipantObjectID="queryParticipantObjectId"
+        ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+        <ParticipantObjectIDTypeCode csd-code="ITI-55" codeSystemName="IHE Transactions"
+            originalText="Cross Gateway Patient Discovery"/>
+        <ParticipantObjectQuery>cXVlcnk=</ParticipantObjectQuery>
+        <ParticipantObjectDetail type="ihe:homeCommunityID"
+            value="MS4yLjg0MC4xMTQzNTAuMS4xMy4zMjEuMS43LjMuNjg4ODg0LjEwMA=="/>
+    </ParticipantObjectIdentification>
+</AuditMessage>

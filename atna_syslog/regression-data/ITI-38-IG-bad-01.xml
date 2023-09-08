@@ -1,0 +1,22 @@
+<AuditMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="healthcare-security-audit.xsd">
+   <!-- https://gazelle.ihe.net/EVSClient/detailedResult.seam?type=ATNA&oid=1.3.6.1.4.1.12559.11.1.2.1.4.1688061 -->
+   <EventIdentification EventActionCode="E" EventDateTime="2022-09-16T14:57:58.857+02:00" EventOutcomeIndicator="0">
+      <EventID codeSystemName="DCM" csd-code="110112" originalText="Query"/>
+      <EventTypeCode codeSystemName="IHE Transactions" csd-code="ITI-38" originalText="Cross Gateway Query"/>
+   </EventIdentification>
+   <ActiveParticipant AlternativeUserID="qie" NetworkAccessPointID="qvera.com" NetworkAccessPointTypeCode="1" UserID="http://www.w3.org/2005/08/addressing/anonymous" UserIsRequestor="true">
+      <RoleIDCode codeSystemName="DCM" csd-code="110153" originalText="Source Role ID"/>
+   </ActiveParticipant>
+   <ActiveParticipant NetworkAccessPointID="ihe.epic.com" NetworkAccessPointTypeCode="1" UserID="" UserIsRequestor="false">
+      <RoleIDCode codeSystemName="DCM" csd-code="110152" originalText="Destination Role ID"/>
+   </ActiveParticipant>
+   <AuditSourceIdentification AuditEnterpriseSiteID="QVERA" AuditSourceID="QIEv5" code="INIT_GATEWAY"/>
+   <ParticipantObjectIdentification ParticipantObjectID="IHEGREEN-1039^^^&amp;1.3.6.1.4.1.21367.13.20.2000&amp;ISO" ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+      <ParticipantObjectIDTypeCode codeSystemName="RFC-3881" csd-code="2" originalText="Patient Number"/>
+   </ParticipantObjectIdentification>
+   <ParticipantObjectIdentification ParticipantObjectID="urn:uuid:b61204e5-b9b3-4759-a1a4-f9311bc0efc7" ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+      <ParticipantObjectIDTypeCode codeSystemName="IHE Transactions" csd-code="ITI-38" originalText="Cross Gateway Query"/>
+      <ParticipantObjectQuery>PEFkaG9jUXVlcnkgaWQ9InVybjp1dWlkOjE0ZDRkZWJmLThmOTctNDI1MS05YTc0LWE5MDAxNmIwYWYwZCI+PFNsb3QgbmFtZT0iJFhEU0RvY3VtZW50RW50cnlQYXRpZW50SWQiPjxWYWx1ZUxpc3Q+PFZhbHVlPidJSEVHUkVFTi0xMDM5Xl5eJmFtcDsxLjMuNi4xLjQuMS4yMTM2Ny4xMy4yMC4yMDAwJmFtcDtJU08nPC9WYWx1ZT48L1ZhbHVlTGlzdD48L1Nsb3Q+PFNsb3QgbmFtZT0iJFhEU0RvY3VtZW50RW50cnlTdGF0dXMiPjxWYWx1ZUxpc3Q+PFZhbHVlPigndXJuOm9hc2lzOm5hbWVzOnRjOmVieG1sLXJlZ3JlcDpTdGF0dXNUeXBlOkFwcHJvdmVkJyk8L1ZhbHVlPjwvVmFsdWVMaXN0PjwvU2xvdD48L0FkaG9jUXVlcnk+</ParticipantObjectQuery>
+      <ParticipantObjectDetail type="ihe:homeCommunityID" value="dXJuOm9pZDoxLjMuNi4xLjQuMS4yMTM2Ny4yMDExLjIuNi4yNDA="/>
+   </ParticipantObjectIdentification>
+</AuditMessage>

@@ -1,0 +1,24 @@
+<AuditMessage>
+  <EventIdentification EventActionCode="E" EventOutcomeIndicator="8" EventDateTime="2023-05-19T18:42:19">
+    <EventID originalText="Query" csd-code="110112" codeSystemName="DCM" />
+    <EventTypeCode csd-code="ITI-38" codeSystemName="IHE Transactions" originalText="Cross Gateway Query" />
+  </EventIdentification>
+  <ActiveParticipant NetworkAccessPointTypeCode="2" UserID="http://www.w3.org/2005/08/addressing/anonymous" UserIsRequestor="false" NetworkAccessPointID="34.239.224.199">
+    <RoleIDCode originalText="Source Role ID" codeSystemName="DCM" csd-code="110153" />
+  </ActiveParticipant>
+  <ActiveParticipant NetworkAccessPointTypeCode="2" UserID="https://qhin-konza-validation.icacareexchange.com:443/v1/qd" NetworkAccessPointID="10.17.1.216" UserIsRequestor="false" AlternativeUserID="4d32487d-9a83-4703-bd66-525368a0186c">
+    <RoleIDCode originalText="Destination Role ID" csd-code="110152" codeSystemName="DCM" />
+  </ActiveParticipant>
+  <AuditSourceIdentification AuditEnterpriseSiteID="UNIDENTIFIED" AuditSourceID="UNIDENTIFIED">
+    <AuditSourceTypeCode csd-code="1" />
+  </AuditSourceIdentification>
+  <ParticipantObjectIdentification ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1" ParticipantObjectID="'200000047683^^^&amp;2.16.840.1.113883.3.1165.4&amp;ISO'">
+    <ParticipantObjectIDTypeCode originalText="Patient Number" codeSystemName="RFC-3881" csd-code="2" />
+  </ParticipantObjectIdentification>
+  <ParticipantObjectIdentification ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24" ParticipantObjectID="urn:uuid:f37dd6e7-108e-4fbf-bab6-13aa76d142b6">
+    <ParticipantObjectIDTypeCode originalText="Cross Gateway Query" codeSystemName="IHE Transactions" csd-code="ITI-38" />
+    <ParticipantObjectQuery>77u/PE1lc3NhZ2VSb290IHhtbG5zOnhzZD0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEiIHhtbG5zOnhzaT0iaHR0cDovL3d3dy53My5vcmcvMjAwMS9YTUxTY2hlbWEtaW5zdGFuY2UiPjxNZXNzYWdlQ29udGVudD48ZW52OkVudmVsb3BlIHhtbG5zOmVudj0iaHR0cDovL3d3dy53My5vcmcvMjAwMy8wNS9zb2FwLWVudmVsb3BlIj48ZW52OkhlYWRlcj48TWVzc2FnZUlEIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDA1LzA4L2FkZHJlc3NpbmciPnVybjp1dWlkOjkwNWFkODc4LWU2YjUtNDMzOS1hNDNkLTQ3NjZkNGUzZDBjYTwvTWVzc2FnZUlEPjxUbyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwNS8wOC9hZGRyZXNzaW5nIj5odHRwczovL3FoaW4ta29uemEtdmFsaWRhdGlvbi5pY2FjYXJlZXhjaGFuZ2UuY29tOjQ0My92MS9xZDwvVG8+PEFjdGlvbiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwNS8wOC9hZGRyZXNzaW5nIiBlbnY6bXVzdFVuZGVyc3RhbmQ9InRydWUiPnVybjppaGU6aXRpOjIwMDc6Q3Jvc3NHYXRld2F5UXVlcnk8L0FjdGlvbj48UmVwbHlUbyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwNS8wOC9hZGRyZXNzaW5nIj48QWRkcmVzcz5odHRwOi8vd3d3LnczLm9yZy8yMDA1LzA4L2FkZHJlc3NpbmcvYW5vbnltb3VzPC9BZGRyZXNzPjwvUmVwbHlUbz48L2VudjpIZWFkZXI+PGVudjpCb2R5PjxBZGhvY1F1ZXJ5UmVxdWVzdCB4bWxucz0idXJuOm9hc2lzOm5hbWVzOnRjOmVieG1sLXJlZ3JlcDp4c2Q6cXVlcnk6My4wIiBJVFNWZXJzaW9uPSJYTUxfMS4wIiBmZWRlcmF0ZWQ9ImZhbHNlIiBtYXhSZXN1bHRzPSItMSIgc3RhcnRJbmRleD0iMCI+DQogIDxSZXNwb25zZU9wdGlvbiByZXR1cm5Db21wb3NlZE9iamVjdHM9InRydWUiIHJldHVyblR5cGU9IkxlYWZDbGFzcyIvPg0KICA8QWRob2NRdWVyeSB4bWxucz0idXJuOm9hc2lzOm5hbWVzOnRjOmVieG1sLXJlZ3JlcDp4c2Q6My4wIiBob21lPSJ1cm46b2lkOjIuMTYuODQwLjEuMTEzODgzLjMuMTE2NS40IiBpZD0idXJuOnV1aWQ6MTRkNGRlYmYtOGY5Ny00MjUxLTlhNzQtYTkwMDE2YjBhZjBkIj4NCiAgICA8U2xvdCBuYW1lPSIkWERTRG9jdW1lbnRFbnRyeVBhdGllbnRJZCI+DQogICAgICA8VmFsdWVMaXN0Pg0KICAgICAgICA8VmFsdWU+JzIwMDAwMDA0NzY4M15eXiZhbXA7Mi4xNi44NDAuMS4xMTM4ODMuMy4xMTY1LjQmYW1wO0lTTyc8L1ZhbHVlPg0KICAgICAgPC9WYWx1ZUxpc3Q+DQogICAgPC9TbG90Pg0KICAgIDxTbG90IG5hbWU9IiRYRFNEb2N1bWVudEVudHJ5U3RhdHVzIj4NCiAgICAgIDxWYWx1ZUxpc3Q+DQogICAgICAgIDxWYWx1ZT4oJ3VybjpvYXNpczpuYW1lczp0YzplYnhtbC1yZWdyZXA6U3RhdHVzVHlwZTpBcHByb3ZlZCcsJ3VybjpvYXNpczpuYW1lczp0YzplYnhtbC1yZWdyZXA6U3RhdHVzVHlwZTpEZXByZWNhdGVkJyk8L1ZhbHVlPg0KICAgICAgPC9WYWx1ZUxpc3Q+DQogICAgPC9TbG90Pg0KICAgIDxTbG90IG5hbWU9IiRYRFNEb2N1bWVudEVudHJ5VHlwZSI+DQogICAgICA8VmFsdWVMaXN0Pg0KICAgICAgICA8VmFsdWU+KCd1cm46dXVpZDozNDI2OGU0Ny1mZGY1LTQxYTYtYmEzMy04MjEzM2M0NjUyNDgnKTwvVmFsdWU+DQogICAgICAgIDxWYWx1ZT4oJ3Vybjp1dWlkOjdlZGNhODJmLTA1NGQtNDdmMi1hMDMyLTliMmE1YjUxODZjMScpPC9WYWx1ZT4NCiAgICAgIDwvVmFsdWVMaXN0Pg0KICAgIDwvU2xvdD4NCiAgPC9BZGhvY1F1ZXJ5Pg0KPC9BZGhvY1F1ZXJ5UmVxdWVzdD48L2VudjpCb2R5PjwvZW52OkVudmVsb3BlPjwvTWVzc2FnZUNvbnRlbnQ+PC9NZXNzYWdlUm9vdD4=</ParticipantObjectQuery>
+    <ParticipantObjectDetail type="QueryEncoding" value="VVRGLTg=" />
+  </ParticipantObjectIdentification>
+</AuditMessage>
+

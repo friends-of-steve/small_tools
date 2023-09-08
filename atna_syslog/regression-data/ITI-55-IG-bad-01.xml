@@ -1,0 +1,37 @@
+<AuditMessage xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="healthcare-security-audit.xsd">
+  <!--
+        https://gazelle.ihe.net/EVSClient/detailedResult.seam?type=ATNA&oid=1.3.6.1.4.1.12559.11.1.2.1.4.1613766
+        Error: cvc-complex-type.3.2.2: Attribute 'code' is not allowed to appear in element 'AuditSourceIdentification'.
+   -->
+  <EventIdentification EventActionCode="E" EventDateTime="2021-03-02T15:57:12.724-05:00"
+    EventOutcomeIndicator="0">
+    <EventID codeSystemName="DCM" csd-code="110112" originalText="Query"/>
+    <EventTypeCode codeSystemName="IHE Transactions" csd-code="ITI-55"
+      originalText="Cross Gateway Patient Discovery"/>
+  </EventIdentification>
+  <ActiveParticipant NetworkAccessPointID="199.204.56.248" NetworkAccessPointTypeCode="2"
+    UserID="http://www.w3.org/2005/08/addressing/anonymous" UserIsRequestor="true">
+    <RoleIDCode codeSystemName="DCM" csd-code="110153" originalText="Source Role ID"/>
+  </ActiveParticipant>
+  <ActiveParticipant AlternativeUserID="https://qvera.com:10189/xc"
+    NetworkAccessPointID="OTHER_QVERA_QIE_2021" NetworkAccessPointTypeCode="1"
+    UserID="https://qvera.com:10189/xc" UserIsRequestor="false">
+    <RoleIDCode codeSystemName="DCM" csd-code="110152" originalText="Destination Role ID"/>
+  </ActiveParticipant>
+  <AuditSourceIdentification AuditEnterpriseSiteID="QVERA" AuditSourceID="QIEv5" code="RESP_GATEWAY"/>
+  <ParticipantObjectIdentification
+    ParticipantObjectID="IHERED-1039^^^&amp;1.3.6.1.4.1.21367.13.20.1000&amp;ISO^PI"
+    ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+    <ParticipantObjectIDTypeCode codeSystemName="RFC-3881" csd-code="2"
+      originalText="Patient Number"/>
+  </ParticipantObjectIdentification>
+  <ParticipantObjectIdentification
+    ParticipantObjectID="urn:uuid:6bf5087b-2430-444d-becd-6555f3267cee"
+    ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+    <ParticipantObjectIDTypeCode codeSystemName="IHE Transactions" csd-code="ITI-55"
+      originalText="Cross Gateway Patient Discovery"/>
+    <ParticipantObjectQuery>PHF1ZXJ5QnlQYXJhbWV0ZXI+PHF1ZXJ5SWQgcm9vdD0iY2FjYzBjYjItMzBmMC00MDg2LThkY2UtOWMyNGJhMWE3MjNiIi8+PHN0YXR1c0NvZGUgY29kZT0ibmV3Ii8+PG1hdGNoQ3JpdGVyaW9uTGlzdC8+PHBhcmFtZXRlckxpc3Q+PGxpdmluZ1N1YmplY3RBZG1pbmlzdHJhdGl2ZUdlbmRlcj48dmFsdWUgY29kZT0iRiIgY29kZVN5c3RlbT0iMi4xNi44NDAuMS4xMTM4ODMuNS4xIi8+PHNlbWFudGljc1RleHQ+TGl2aW5nU3ViamVjdC5hZG1pbmlzdHJhdGl2ZUdlbmRlcjwvc2VtYW50aWNzVGV4dD48L2xpdmluZ1N1YmplY3RBZG1pbmlzdHJhdGl2ZUdlbmRlcj48bGl2aW5nU3ViamVjdEJpcnRoVGltZT48dmFsdWUgdmFsdWU9IjE5NjYwNjA1Ii8+PHNlbWFudGljc1RleHQ+TGl2aW5nU3ViamVjdC5iaXJ0aFRpbWU8L3NlbWFudGljc1RleHQ+PC9saXZpbmdTdWJqZWN0QmlydGhUaW1lPjxsaXZpbmdTdWJqZWN0TmFtZT48dmFsdWU+PGdpdmVuPlBhdDwvZ2l2ZW4+PGZhbWlseT5YY3BkPC9mYW1pbHk+PC92YWx1ZT48c2VtYW50aWNzVGV4dD5MaXZpbmdTdWJqZWN0Lm5hbWU8L3NlbWFudGljc1RleHQ+PC9saXZpbmdTdWJqZWN0TmFtZT48cGF0aWVudEFkZHJlc3M+PHZhbHVlPjxzdHJlZXRBZGRyZXNzTGluZT4xMjMgTUlDSElHQU4gQVZFTlVFPC9zdHJlZXRBZGRyZXNzTGluZT48Y2l0eT5DSElDQUdPPC9jaXR5PjxzdGF0ZT5JTDwvc3RhdGU+PHBvc3RhbENvZGU+NjA2MDE8L3Bvc3RhbENvZGU+PC92YWx1ZT48c2VtYW50aWNzVGV4dD5QYXRpZW50LmFkZHI8L3NlbWFudGljc1RleHQ+PC9wYXRpZW50QWRkcmVzcz48L3BhcmFtZXRlckxpc3Q+PC9xdWVyeUJ5UGFyYW1ldGVyPg==</ParticipantObjectQuery>
+    <ParticipantObjectDetail type="ihe:homeCommunityID" value=""/>
+  </ParticipantObjectIdentification>
+</AuditMessage>
