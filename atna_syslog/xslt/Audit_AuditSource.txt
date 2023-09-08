@@ -1,0 +1,1 @@
+Path	@AuditSourceID	@AuditEnterpriseSiteID	AuditSourceTypeCode/@csd-code	AuditSourceTypeCode/@codeSystemName	AuditSourceTypeCode/@originalText

@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AuditMessage>
+  <!--
+        Original message
+        https://gazelle.ihe.net/EVSClient/detailedResult.seam?type=ATNA&oid=1.3.6.1.4.1.12559.11.1.2.1.4.865265
+
+        DICOM Audit Trail Message Format Profile:  https://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_A.5.html
+        IHE Audit Message Format:                  https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.7
+        ITI-55 Responding Gateway Audit Message:   https://profiles.ihe.net/ITI/TF/Volume2/ITI-55.html#3.55.5.1.2
+  -->
+  <!-- ITI-55 IG Higher Level Requirements
+    Event             (EventIdentification)
+    Source            (Initiating Gateway)(1)
+    Destination       (Responding Gateway) (1)
+    Audit Source      (Responding Gateway) (1)
+    Patient           Patient (0..n) one for each patient whose demographic information was returned in the response.
+    Query Parameters  (1)
+  -->
+
+  <!-- Event: AuditMessage/EventIdentification
+    EventID                 M    EV(11012,DCM,"Query")
+    @EventActionCode        M    "E" (Execute)
+    @EventDateTime          M    xsd:dateTime
+    @EventOutcomeIndicator  M    {0, 4, 8, 12}
+    EventTypeCode           M    EV(“ITI-55”, “IHE Transactions”, “Cross Gateway Patient Discovery”)
+  -->
+  <EventIdentification
+    EventActionCode="E"
+    EventDateTime="2023-01-23T08:00:08.5500000-04:00"
+    EventOutcomeIndicator="0">
+    <EventID
+      csd-code="110112"
+      originalText="Query"
+      codeSystemName="DCM"/>
+    <EventTypeCode
+      csd-code="ITI-55"
+      originalText="Cross Gateway Patient Discovery"
+      codeSystemName="IHE Transactions"/>
+  </EventIdentification>
+
+  <!-- Source: AuditMessage/ActiveParticipant
+    @UserID                        M     If Asynchronous Web Services Exchange is being used, the content of the <wsa:ReplyTo/> element. Otherwise, not specialized.
+    @AlternativeUserID             U     text
+    @UserName                      U     text
+    @UserIsRequestor               U     xsd:boolean
+    RoleIDCode                     M     EV(110153, DCM, "Source Role ID")
+    @NetworkAccessPointTypeCode    M     “1” for machine (DNS) name, “2” for IP address
+    @NetworkAccessPointID          M     The machine name or IP address.
+  -->
+  <ActiveParticipant
+    UserID="NA"
+    AlternativeUserID="NA"
+    UserName="NA"
+    UserIsRequestor="false"
+    NetworkAccessPointTypeCode="2"
+    NetworkAccessPointID="10.39.88.17">
+    <RoleIDCode
+      csd-code="110153"
+      originalText="Source Role ID"
+      codeSystemName="DCM"/>
+  </ActiveParticipant>
+
+  <!-- Destination:  AuditMessage/ActiveParticipant
+    @UserID                        M     SOAP endpoint URI.
+    @AlternativeUserID             M     Local OS process ID
+    @UserName                      U     text
+    @UserIsRequestor               M     “false”
+    RoleIDCode                     M     EV(110152, DCM, "Destination Role ID")
+    @NetworkAccessPointTypeCode    M     “1” for machine (DNS) name, “2” for IP address
+    @NetworkAccessPointID          M     The machine name or IP address.
+  -->
+  <ActiveParticipant
+    UserID="https://b5469q.amazon.com/api/rg"
+    AlternativeUserID="7324"
+    UserName="NA"
+    UserIsRequestor="false"
+    NetworkAccessPointTypeCode="1"
+    NetworkAccessPointID="b5469q.amazon.com">
+    <RoleIDCode
+      csd-code="110152"
+      codeSystemName="DCM"
+      originalText="Destination Role ID"/>
+  </ActiveParticipant>
+
+  <!-- AuditMessage/AuditSourceIdentification
+    @AuditSourceID            U    token
+    @AuditEnterpriseSiteID    U    token
+    @AuditSourceTypeCode      U    1-9, token
+  -->
+  <AuditSourceIdentification
+    AuditSourceID="1.2.3.4.5.6.7">
+    <AuditSourceTypeCode
+      csd-code="9"
+      originalText="Other"
+      codeSystemName="DCM"/>
+  </AuditSourceIdentification>
+
+  <!-- Patient:  AuditMessage/ ParticipantObjectIdentification
+    @ParticipantObjectTypeCode 	    M  	“1” (Person)
+    @ParticipantObjectTypeCodeRole 	M  	“1” (Patient)
+    @ParticipantObjectDataLifeCycle  U  	1-15
+    ParticipantObjectIDTypeCode 	   M  	CodedValueType
+    @ParticipantObjectSensitivity 	 U  	token
+    @ParticipantObjectID 	          M  	The patient ID in HL7 CX format.
+    ParticipantObjectName          	U  	token
+    ParticipantObjectQuery 	        U    xsd:base64Binary
+    ParticipantObjectDetail/@type  	U    not specialized
+    ParticipantObjectDetail/@value 	U    not specialized
+  -->
+  <ParticipantObjectIdentification
+    ParticipantObjectID="IHERED-2737^^^&amp;1.3.6.1.4.1.21367.13.20.1000&amp;ISO"
+    ParticipantObjectTypeCode="1" ParticipantObjectTypeCodeRole="1">
+    <ParticipantObjectIDTypeCode csd-code="2" originalText="Patient Number"
+      codeSystemName="99RFC-3881"/>
+  </ParticipantObjectIdentification>
+
+  <!-- Query Parameters:  AuditMessage/ ParticipantObjectIdentification
+    @ParticipantObjectTypeCode 	    M  	“2” (system object)
+    @ParticipantObjectTypeCodeRole 	M  	“24” (query)
+    @ParticipantObjectDataLifeCycle  U  	1-15
+    ParticipantObjectIDTypeCode 	   M  	EV(“ITI-55, “IHE Transactions”, “Cross Gateway Patient Discovery”)
+    @ParticipantObjectSensitivity 	 U  	token
+    @ParticipantObjectID 	          U  	token
+    ParticipantObjectName          	U  	token
+    ParticipantObjectQuery 	        M    the QueryByParameter segment of the query , base64 encoded.
+    ParticipantObjectDetail/@type  	M    type: “ihe:homeCommunityID” (literal string)
+    ParticipantObjectDetail/@value 	M    value: value of the homeCommunityID (xsd:base64Binary)
+  -->
+  <ParticipantObjectIdentification
+    ParticipantObjectID="@1.3.6.1.4.1.40371.1.2.56392.60367.39335.13533.59199.55143.32467"
+    ParticipantObjectTypeCode="2" ParticipantObjectTypeCodeRole="24">
+    <ParticipantObjectIDTypeCode csd-code="ITI-55" originalText="Cross Gateway Patient Discovery"
+      codeSystemName="IHE Transactions"/>
+
+    <!-- See below for base64 decoding -->
+    <ParticipantObjectQuery>PHF1ZXJ5QnlQYXJhbWV0ZXI+CiAgPHF1ZXJ5SWQgcm9vdD0iMS4zLjYuMS40LjEuNDAzNzEuMS4yLjU2MzkyLjYwMzY3LjM5MzM1LjEzNTMzLjU5MTk5LjU1MTQzLjMyNDY3IiAvPgogIDxzdGF0dXNDb2RlIGNvZGU9Im5ldyIgLz4KICA8cmVzcG9uc2VNb2RhbGl0eUNvZGUgY29kZT0iUiIgLz4KICA8cmVzcG9uc2VQcmlvcml0eUNvZGUgY29kZT0iSSIgLz4KICA8cGFyYW1ldGVyTGlzdD4KICAgIDxsaXZpbmdTdWJqZWN0QWRtaW5pc3RyYXRpdmVHZW5kZXI+CiAgICAgIDx2YWx1ZSBjb2RlPSJGIiAvPgogICAgICA8c2VtYW50aWNzVGV4dD5MaXZpbmdTdWJqZWN0LmFkbWluaXN0cmF0aXZlR2VuZGVyPC9zZW1hbnRpY3NUZXh0PgogICAgPC9saXZpbmdTdWJqZWN0QWRtaW5pc3RyYXRpdmVHZW5kZXI+CiAgICA8bGl2aW5nU3ViamVjdEJpcnRoVGltZT4KICAgICAgPHZhbHVlIHZhbHVlPSIxOTc3MDcwNiIgLz4KICAgICAgPHNlbWFudGljc1RleHQ+TGl2aW5nU3ViamVjdC5iaXJ0aFRpbWU8L3NlbWFudGljc1RleHQ+CiAgICA8L2xpdmluZ1N1YmplY3RCaXJ0aFRpbWU+CiAgICA8bGl2aW5nU3ViamVjdE5hbWU+CiAgICAgIDx2YWx1ZT4KICAgICAgICA8Z2l2ZW4+UGF0PC9naXZlbj4KICAgICAgICA8ZmFtaWx5PlhjcGQ8L2ZhbWlseT4KICAgICAgPC92YWx1ZT4KICAgICAgPHNlbWFudGljc1RleHQ+TGl2aW5nU3ViamVjdC5uYW1lPC9zZW1hbnRpY3NUZXh0PgogICAgPC9saXZpbmdTdWJqZWN0TmFtZT4KICA8L3BhcmFtZXRlckxpc3Q+CjwvcXVlcnlCeVBhcmFtZXRlcj4=</ParticipantObjectQuery>
+
+    <!-- HCID decodes to urn:oid:2.16.840.1.113883.3.7204.1.3.1.2.3.1 -->
+    <ParticipantObjectDetail
+      type="ihe:homeCommunityID"
+      value="dXJuOm9pZDoyLjE2Ljg0MC4xLjExMzg4My4zLjcyMDQuMS4zLjEuMi4zLjEK"/>
+  </ParticipantObjectIdentification>
+
+  <!-- The is the decoded content of the <ParticipantObjectQuery> above.
+       On a Linux or Mac system, "base64 -d -i filename"
+  <queryByParameter>
+    <queryId root="1.3.6.1.4.1.40371.1.2.56392.60367.39335.13533.59199.55143.32467" />
+    <statusCode code="new" />
+    <responseModalityCode code="R" />
+    <responsePriorityCode code="I" />
+    <parameterList>
+      <livingSubjectAdministrativeGender>
+        <value code="F" />
+        <semanticsText>LivingSubject.administrativeGender</semanticsText>
+      </livingSubjectAdministrativeGender>
+      <livingSubjectBirthTime>
+        <value value="19770706" />
+        <semanticsText>LivingSubject.birthTime</semanticsText>
+      </livingSubjectBirthTime>
+      <livingSubjectName>
+        <value>
+          <given>Pat</given>
+          <family>Xcpd</family>
+        </value>
+        <semanticsText>LivingSubject.name</semanticsText>
+      </livingSubjectName>
+    </parameterList>
+  </queryByParameter>
+  -->
+
+</AuditMessage>

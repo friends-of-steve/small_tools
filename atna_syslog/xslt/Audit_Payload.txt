@@ -1,0 +1,1 @@
+Path	(Payload)@ObjectTypeCode	@ObjectTypeCodeRole	@ObjectDataLifeCycle	@ObjectIDTypeCode(code)	@ObjectIDTypeCode(system)	@ObjectIDTypeCode(text)	@ObjectSensitivity	@ObjectID	ObjectName	ObjectQuery	@ObjectDetail[1]/type	@ObjectDetail[1]/value	@ObjectDetail[2]/type	@ObjectDetail[2]/value

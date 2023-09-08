@@ -16,9 +16,10 @@
     <xsl:text>:</xsl:text>
     <xsl:value-of select="AuditMessage/EventIdentification/EventTypeCode/@codeSystemName"/>
     <xsl:text>)</xsl:text>
-
-    <!-- This should return 'true' when the source is the requestor and help us identify client/server for ITI-38 and ITI-55 -->
-    <xsl:value-of select="AuditMessage/ActiveParticipant/RoleIDCode[@csd-code = '110153']/../@UserIsRequestor"/>
+    
+    
+    <xsl:value-of select="AuditMessage/ActiveParticipant/RoleIDCode[@csd-code='110153']/../@AlternativeUserID"/>
+    
 
   </xsl:template>
 </xsl:stylesheet>

@@ -1,0 +1,1 @@
+Path	@UserID	@AlternativeUserID	@UserName	@UserIsRequestor	@NetworkAccessPointTypeCode	@NetworkAccessPointID	RoleIDCode/@csd-code	RoleIDCode/@codeSystemName	RoleIDCode/@originalText

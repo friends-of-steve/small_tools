@@ -1,0 +1,134 @@
+<AuditMessage
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="healthcare-security-audit.xsd">
+  <!--
+        Original message
+        https://gazelle.ihe.net/EVSClient/detailedResult.seam?type=ATNA&oid=1.3.6.1.4.1.12559.11.1.2.1.4.1688085
+
+        DICOM Audit Trail Message Format Profile:  https://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_A.5.html
+        IHE Audit Message Format:                  https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.7
+        ITI-38 Initatiating Gateway Audit Message: https://profiles.ihe.net/ITI/TF/Volume2/ITI-38.html#3.38.4.1.4
+        ITI-18 Document Consumer Audit Message:    https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html#3.18.5.1.1
+  -->
+  <!-- ITI-43 IG Higher Level Requirements (Yes, ITI-43)
+    Event             (EventIdentification)
+    Source            (Document Repository/Responding Gateway/)(1)
+    Destination       (Document Consumer/Initiating Gateway) (1)
+    Audit Source      (Document Repository/Responding Gateway) (1)
+    Patient           (0..1)
+    Document          (1..n)
+  -->
+  
+  <!-- Event: AuditMessage/EventIdentification
+    EventID                 M    EV(110106, DCM, “Export”)
+    @EventActionCode        M    “R” (Read)
+    @EventDateTime          M    xsd:dateTime
+    @EventOutcomeIndicator  M    {0, 4, 8, 12}
+    EventTypeCode           M    EV(“ITI-39”, “IHE Transactions”, “Cross Gateway Retrieve”)
+  -->
+  <EventIdentification
+    EventActionCode="R"
+    EventDateTime="2023-01-23T08:20:08.3900000-04:00"
+    EventOutcomeIndicator="0">
+    <EventID
+      csd-code="110106"
+      codeSystemName="DCM"
+      originalText="Export"/>
+    <EventTypeCode
+      csd-code="ITI-39"
+      codeSystemName="IHE Transactions"
+      originalText="Cross Gateway Retrieve"/>
+  </EventIdentification>
+
+  <!-- The source is the Responding Gateway. It provides the document(s) -->
+  <!-- Source: AuditMessage/ActiveParticipant
+    @UserID                        M     SOAP endpoint URI.
+    @AlternativeUserID             M     the process ID as used within the local operating system in the local system logs.
+    @UserName                      U     text
+    @UserIsRequestor               M     "false"
+    RoleIDCode                     M     EV(110153, DCM, "Source Role ID")
+    @NetworkAccessPointTypeCode    M     “1” for machine (DNS) name, “2” for IP address
+    @NetworkAccessPointID          M     The machine name or IP address.
+  -->
+  <ActiveParticipant
+    UserID="https://b5469q.amazon.com/api/rg"
+    AlternativeUserID="7324"
+    UserName="NA"
+    UserIsRequestor="false"
+    NetworkAccessPointTypeCode="1"
+    NetworkAccessPointID="b5469q.amazon.com">
+    <RoleIDCode
+      csd-code="110153"
+      codeSystemName="DCM"
+      originalText="Source Role ID"/>
+  </ActiveParticipant>
+
+  <!-- The destination is the Initiating Gateway. It imports the document(s) -->
+  <!-- Destination:  AuditMessage/ActiveParticipant
+    @UserID                        M     If Asynchronous Web Services Exchange is being used, the content of the <wsa:ReplyTo/> element. Otherwise, not specialized.
+    @AlternativeUserID             U     text
+    @UserName                      U     text
+    @UserIsRequestor               U     xsd:boolean
+    RoleIDCode                     M     EV(110152, DCM, "Destination Role ID")
+    @NetworkAccessPointTypeCode    M     “1” for machine (DNS) name, “2” for IP address
+    @NetworkAccessPointID          M     The machine name or IP address.
+  -->
+
+  <ActiveParticipant
+    UserID="NA"
+    AlternativeUserID="NA"
+    UserName="NA"
+    UserIsRequestor="false"
+    NetworkAccessPointTypeCode="2"
+    NetworkAccessPointID="10.39.88.17">
+    <RoleIDCode
+      csd-code="110152"
+      originalText="Destination Role ID"
+      codeSystemName="DCM"/>
+  </ActiveParticipant>
+
+  <!-- AuditMessage/AuditSourceIdentification
+    @AuditSourceID            U    token
+    @AuditEnterpriseSiteID    U    token
+    @AuditSourceTypeCode      U    1-9, token
+  -->
+  <AuditSourceIdentification
+    AuditSourceID="1.2.3.4.5.6.7">
+    <AuditSourceTypeCode
+      csd-code="9"
+      originalText="Other"
+      codeSystemName="DCM"/>
+  </AuditSourceIdentification>
+
+  <!-- Document URI:  AuditMessage/PariticipantObjectIdentification
+    @ParticipantObjectTypeCode 	    M  	“2” (System)
+    @ParticipantObjectTypeCodeRole 	M  	“3” (report)
+    @ParticipantObjectDataLifeCycle  U  	
+    ParticipantObjectIDTypeCode 	   M  	
+    @ParticipantObjectSensitivity 	 U  	token
+    @ParticipantObjectID 	          M  	The value of <ihe:DocumentUniqueId/>
+    ParticipantObjectName          	C  	token
+    ParticipantObjectQuery 	        U
+    
+    ParticipantObjectDetail/@type  	M    "Repository Unique ID" (literal string)
+    ParticipantObjectDetail/@value 	M    the value of <ihe:RepositoryUniqueId/>
+    ParticipantObjectDetail/@type  	M    "ihe:homeCommunityID” (literal string)
+    ParticipantObjectDetail/@value 	M    value of the homeCommunityId
+  -->
+  <ParticipantObjectIdentification
+    ParticipantObjectTypeCode="2"
+    ParticipantObjectTypeCodeRole="3"
+    ParticipantObjectID="1.2.42.20230731124222.196">
+    <ParticipantObjectIDTypeCode
+      csd-code="9"
+      codeSystemName="RFC-3881"
+      originalText="Report Number"/>
+    <ParticipantObjectDetail
+      type="Repository Unique Id"
+      value="Mi4xNi44NDAuMS4xMTM4ODMuMy44MDczLjEwMDAuNTYxLjUuMQ=="/>
+    <!-- HCID decodes to urn:oid:2.16.840.1.113883.3.7204.1.3.1.2.3.1 -->
+    <ParticipantObjectDetail
+      type="homeCommunityID"
+      value="dXJuOm9pZDoyLjE2Ljg0MC4xLjExMzg4My4zLjcyMDQuMS4zLjEuMi4zLjEK"/>
+  </ParticipantObjectIdentification>
+</AuditMessage>

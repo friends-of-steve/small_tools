@@ -1,0 +1,1 @@
+Path	@EventActionCode	@EventDateTime	@EventOutcomeIndicator	EventID/@csd-code	EventID/@codeSystemName	EventID/@originalText

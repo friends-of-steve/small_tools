@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<AuditMessage>
+  <!--
+        Original message
+
+        DICOM Audit Trail Message Format Profile:  https://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_A.5.html
+        IHE Audit Message Format:                  https://profiles.ihe.net/ITI/TF/Volume2/ITI-20.html#3.20.7
+        ITI-38 Initatiating Gateway Audit Message: https://profiles.ihe.net/ITI/TF/Volume2/ITI-38.html#3.38.4.1.4
+        ITI-18 Document Consumer Audit Message:    https://profiles.ihe.net/ITI/TF/Volume2/ITI-18.html#3.18.5.1.1
+  -->
+  <!-- ITI-18 IG Higher Level Requirements (Yes, ITI-18)
+    Event             (EventIdentification)
+    Source            (Document Consumer/Initiating Gateway/)(1)
+    Destination       (Document Registry/Responding Gateway) (1)
+    Audit Source      (Document Registry/Responding Gateway) (1)
+    Patient           (0..1)
+    Query Parameters  (1)
+  -->
+
+  <!-- Event: AuditMessage/EventIdentification
+    EventID                 M    EV(110112,DCM,"Query")
+    @EventActionCode        M    "E" (Execute)
+    @EventDateTime          M    xsd:dateTime
+    @EventOutcomeIndicator  M    {0, 4, 8, 12}
+    EventTypeCode           M    EV(“ITI-38”, “IHE Transactions”, “Cross Gateway Query”)
+  -->
+  <EventIdentification
+    EventActionCode="E"
+    EventDateTime="2023-01-23T08:10:08.3800000-04:00"
+    EventOutcomeIndicator="8">
+    <EventID
+      csd-code="110112"
+      originalText="Query"
+      codeSystemName="DCM"/>
+    <EventTypeCode
+      csd-code="ITI-38"
+      codeSystemName="IHE Transactions"
+      originalText="Cross Gateway Query"/>
+  </EventIdentification>
+
+  <!-- Source: AuditMessage/ActiveParticipant
+    @UserID                        M     If Asynchronous Web Services Exchange is being used, the content of the <wsa:ReplyTo/> element. Otherwise, not specialized.
+    @AlternativeUserID             U     text
+    @UserName                      U     text
+    @UserIsRequestor               U     xsd:boolean
+    RoleIDCode                     M     EV(110153, DCM, "Source Role ID")
+    @NetworkAccessPointTypeCode    M     “1” for machine (DNS) name, “2” for IP address
+    @NetworkAccessPointID          M     The machine name or IP address.
+  -->
+  <ActiveParticipant
+    UserID="NA"
+    AlternativeUserID="NA"
+    UserName="NA"
+    UserIsRequestor="false"
+    NetworkAccessPointTypeCode="2"
+    NetworkAccessPointID="10.39.88.17">
+    <RoleIDCode
+      csd-code="110153"
+      codeSystemName="DCM"
+      originalText="Source Role ID"/>
+  </ActiveParticipant>
+
+  <!-- Destination:  AuditMessage/ActiveParticipant
+    @UserID                        M     SOAP endpoint URI.
+    @AlternativeUserID             M     The process ID as used within the local operating system in the local system logs.
+    @UserName                      U     text
+    @UserIsRequestor               U     xsd:boolean
+    RoleIDCode                     M     EV(110152, DCM, "Destination Role ID")
+    @NetworkAccessPointTypeCode    M     “1” for machine (DNS) name, “2” for IP address
+    @NetworkAccessPointID          M     The machine name or IP address.
+  -->
+  <ActiveParticipant
+    UserID="https://b5469q.amazon.com/api/rg"
+    AlternativeUserID="7324"
+    UserName="NA"
+    UserIsRequestor="false"
+    NetworkAccessPointTypeCode="1"
+    NetworkAccessPointID="b5469q.amazon.com">
+    <RoleIDCode
+      csd-code="110152"
+      codeSystemName="DCM"
+      originalText="Destination Role ID"/>
+  </ActiveParticipant>
+
+  <!-- AuditMessage/AuditSourceIdentification
+    @AuditSourceID            U    token
+    @AuditEnterpriseSiteID    U    token
+    @AuditSourceTypeCode      U    1-9, token
+  -->
+  <AuditSourceIdentification
+    AuditSourceID="1.2.3.4.5.6.7">
+    <AuditSourceTypeCode
+      csd-code="9"
+      originalText="Other"
+      codeSystemName="DCM"/>
+  </AuditSourceIdentification>
+
+
+  <!-- Patient:  AuditMessage/ ParticipantObjectIdentification
+    @ParticipantObjectTypeCode 	    M  	“1” (Person)
+    @ParticipantObjectTypeCodeRole 	M  	“1” (Patient)
+    @ParticipantObjectDataLifeCycle  U  	
+    ParticipantObjectIDTypeCode 	   M  	
+    @ParticipantObjectSensitivity 	 U  	token
+    @ParticipantObjectID 	          M  	The patient ID in HL7 CX format.
+    ParticipantObjectName          	U  	token
+    ParticipantObjectQuery 	        U
+    ParticipantObjectDetail/@type  	U
+    ParticipantObjectDetail/@value 	U
+  -->
+  <ParticipantObjectIdentification
+    ParticipantObjectTypeCode="1"
+    ParticipantObjectTypeCodeRole="1"
+    ParticipantObjectID="IHERED-2737^^^&amp;1.3.6.1.4.1.21367.13.20.1000&amp;ISO">
+    <ParticipantObjectIDTypeCode
+      csd-code="2"
+      codeSystemName="99RFC 3881"
+      originalText="Patient Number"/>
+  </ParticipantObjectIdentification>
+
+  <!-- Query Parameters:  AuditMessage/PariticipantObjectIdentification
+    @ParticipantObjectTypeCode 	    M  	“2” (System)
+    @ParticipantObjectTypeCodeRole 	M  	“24” (query)
+    @ParticipantObjectDataLifeCycle  U  	
+    ParticipantObjectIDTypeCode 	   M  	EV(“ITI-38”, “IHE Transactions”, “Cross Gateway Query”)
+    @ParticipantObjectSensitivity 	 U  	token
+    @ParticipantObjectID 	          M  	Stored Query ID (UUID)
+    ParticipantObjectName          	U  	token
+    ParticipantObjectQuery 	        M    the AdhocQueryRequest, base64 encoded.
+
+    ParticipantObjectDetail/@type  	M    Encoding of the query: type "QueryEncoding" (literal string)
+    ParticipantObjectDetail/@value 	M    value: base64 encoding of the encoding 
+    ParticipantObjectDetail/@type  	M    The homeCommunityId of the destination intended recipient : type: “urn:ihe:iti:xca:2010:homeCommunityId” (literal string)
+    ParticipantObjectDetail/@value 	M    value: value of the homeCommunityId
+  -->
+  <ParticipantObjectIdentification
+    ParticipantObjectTypeCode="2"
+    ParticipantObjectTypeCodeRole="24"
+    ParticipantObjectID="urn:uuid:14d4debf-8f97-4251-9a74-a90016b0af0d">
+    <ParticipantObjectIDTypeCode
+      csd-code="ITI-38"
+      codeSystemName="IHE Transactions"
+      originalText="Cross Gateway Query"/>
+    <!-- See comment below for decoded value -->
+    <ParticipantObjectQuery>PD94bWwgdmVyc2lvbj0iMS4wIj8+DQo8cTE6QWRob2NRdWVyeVJlcXVlc3QgeG1sbnM6eHNkPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYSIgeG1sbnM6eHNpPSJodHRwOi8vd3d3LnczLm9yZy8yMDAxL1hNTFNjaGVtYS1pbnN0YW5jZSIgeG1sbnM9InVybjppaGU6aXRpOnhkcy1iOjIwMDciIHhtbG5zOnExPSJ1cm46b2FzaXM6bmFtZXM6dGM6ZWJ4bWwtcmVncmVwOnhzZDpxdWVyeTozLjAiPg0KICA8cTE6UmVzcG9uc2VPcHRpb24gcmV0dXJuVHlwZT0iTGVhZkNsYXNzIiByZXR1cm5Db21wb3NlZE9iamVjdHM9InRydWUiIC8+DQogIDxBZGhvY1F1ZXJ5IGlkPSJ1cm46dXVpZDoxNGQ0ZGViZi04Zjk3LTQyNTEtOWE3NC1hOTAwMTZiMGFmMGQiIGhvbWU9InVybjpvaWQ6MS4zLjYuMS40LjEuMjEzNjcuMjAxMS4yLjYuMjUwIiB4bWxucz0idXJuOm9hc2lzOm5hbWVzOnRjOmVieG1sLXJlZ3JlcDp4c2Q6cmltOjMuMCI+DQogICAgPFNsb3QgbmFtZT0iJFhEU0RvY3VtZW50RW50cnlQYXRpZW50SWQiPg0KICAgICAgPFZhbHVlTGlzdD4NCiAgICAgICAgPFZhbHVlPidJSEVSRUQtMjczN15eXiZhbXA7MS4zLjYuMS40LjEuMjEzNjcuMTMuMjAuMTAwMCZhbXA7SVNPJzwvVmFsdWU+DQogICAgICA8L1ZhbHVlTGlzdD4NCiAgICA8L1Nsb3Q+DQogICAgPFNsb3QgbmFtZT0iJFhEU0RvY3VtZW50RW50cnlTdGF0dXMiPg0KICAgICAgPFZhbHVlTGlzdD4NCiAgICAgICAgPFZhbHVlPigndXJuOm9hc2lzOm5hbWVzOnRjOmVieG1sLXJlZ3JlcDpTdGF0dXNUeXBlOkFwcHJvdmVkJyk8L1ZhbHVlPg0KICAgICAgPC9WYWx1ZUxpc3Q+DQogICAgPC9TbG90Pg0KICAgIDxTbG90IG5hbWU9IiRYRFNEb2N1bWVudEVudHJ5VHlwZSI+DQogICAgICA8VmFsdWVMaXN0Pg0KICAgICAgICA8VmFsdWU+KCd1cm46dXVpZDo3ZWRjYTgyZi0wNTRkLTQ3ZjItYTAzMi05YjJhNWI1MTg2YzEnKTwvVmFsdWU+DQogICAgICA8L1ZhbHVlTGlzdD4NCiAgICA8L1Nsb3Q+DQogIDwvQWRob2NRdWVyeT4NCjwvcTE6QWRob2NRdWVyeVJlcXVlc3Q+</ParticipantObjectQuery>
+    <!-- value decodes to UTF-8 -->
+    <ParticipantObjectDetail
+      type="QueryEncoding"
+      value="VVRGLTg="/>
+    <!-- HCID decodes to urn:oid:2.16.840.1.113883.3.7204.1.3.1.2.3.1 -->
+    <ParticipantObjectDetail
+      type="urn:ihe:iti:xca:2010:homeCommunityId"
+      value="dXJuOm9pZDoyLjE2Ljg0MC4xLjExMzg4My4zLjcyMDQuMS4zLjEuMi4zLjEK"/>
+  </ParticipantObjectIdentification>
+
+  <!-- Decoded value of the Cross Gateway Query 
+  <?xml version="1.0"?>
+  <q1:AdhocQueryRequest xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="urn:ihe:iti:xds-b:2007"
+    xmlns:q1="urn:oasis:names:tc:ebxml-regrep:xsd:query:3.0">
+    <q1:ResponseOption returnType="LeafClass" returnComposedObjects="true"/>
+    <AdhocQuery id="urn:uuid:14d4debf-8f97-4251-9a74-a90016b0af0d"
+      home="urn:oid:1.3.6.1.4.1.21367.2011.2.6.250"
+      xmlns="urn:oasis:names:tc:ebxml-regrep:xsd:rim:3.0">
+      <Slot name="$XDSDocumentEntryPatientId">
+        <ValueList>
+          <Value>'IHERED-2737^^^&amp;1.3.6.1.4.1.21367.13.20.1000&amp;ISO'</Value>
+        </ValueList>
+      </Slot>
+      <Slot name="$XDSDocumentEntryStatus">
+        <ValueList>
+          <Value>('urn:oasis:names:tc:ebxml-regrep:StatusType:Approved')</Value>
+        </ValueList>
+      </Slot>
+      <Slot name="$XDSDocumentEntryType">
+        <ValueList>
+          <Value>('urn:uuid:7edca82f-054d-47f2-a032-9b2a5b5186c1')</Value>
+        </ValueList>
+      </Slot>
+    </AdhocQuery>
+  </q1:AdhocQueryRequest>
+  -->
+
+</AuditMessage>
