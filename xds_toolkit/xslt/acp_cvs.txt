@@ -1,0 +1,1 @@
+File	Assertion @ID	Assertion @IssueInstant	Issuer	Subject/NameID	@NotBefore	@NotOnOAfter	XSPA Org	XSPA Org ID	HCID (IHE)	HCID (nhin)	Role @code	Role @codeSystem	Role@displayName	XP @code	XP @codeSystem	XP @displayName	Subject ID	Policy ID	IACP Doc ID
