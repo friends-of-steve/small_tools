@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Iterate through the transactions of one Toolkit simulator
 # and apply one XSLT to each request_body.txt that is found.
