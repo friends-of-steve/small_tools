@@ -1,0 +1,11 @@
+header	.alg	eq	RS256
+header	.kid	notEmpty	NA
+header	.typ	eq	JWT
+payload	.aud	startsWith	urn:oid:
+payload	.iss	notEmpty	NA
+payload	.jti	notEmpty	NA
+payload	.given_name	eq	QTF TEST
+payload	.family_name	eq	QTFTEST-002
+payload	.address.street_address	eq	1085 Grant Boulevard
+payload	.address.locality	eq	Marblehead
+payload	.address.postal_code	eq	01945
