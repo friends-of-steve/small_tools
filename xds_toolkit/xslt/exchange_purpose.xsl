@@ -19,7 +19,6 @@
 
     <!--PurposeOfUse @code-->           <xsl:value-of select="normalize-space(soapenv:Header/wsse:Security/saml2:Assertion/saml2:AttributeStatement/saml2:Attribute[@Name='urn:oasis:names:tc:xspa:1.0:subject:purposeofuse']/saml2:AttributeValue/hl7v3:PurposeOfUse/@code)" /><xsl:text>&#009;</xsl:text>
     <!--PurposeOfUse @codeSystem-->            <xsl:value-of select="normalize-space(soapenv:Header/wsse:Security/saml2:Assertion/saml2:AttributeStatement/saml2:Attribute[@Name='urn:oasis:names:tc:xspa:1.0:subject:purposeofuse']/saml2:AttributeValue/hl7v3:PurposeOfUse/@codeSystem)" /><xsl:text>&#009;</xsl:text>
-    <!--PurposeOfUse @displayName-->            <xsl:value-of select="normalize-space(soapenv:Header/wsse:Security/saml2:Assertion/saml2:AttributeStatement/saml2:Attribute[@Name='urn:oasis:names:tc:xspa:1.0:subject:purposeofuse']/saml2:AttributeValue/hl7v3:PurposeOfUse/@displayName)" /><xsl:text>&#009;</xsl:text>
-  
+    <!--PurposeOfUse @displayName-->            <xsl:value-of select="normalize-space(soapenv:Header/wsse:Security/saml2:Assertion/saml2:AttributeStatement/saml2:Attribute[@Name='urn:oasis:names:tc:xspa:1.0:subject:purposeofuse']/saml2:AttributeValue/hl7v3:PurposeOfUse/@displayName)" /><xsl:text>&#010;</xsl:text>
   </xsl:template>
 </xsl:stylesheet>

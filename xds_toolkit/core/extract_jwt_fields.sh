@@ -34,8 +34,12 @@ fi
 
 output_string=""
 for field in alg typ kid ; do
-  extract=`jq -r ".$field" $HEADER`
-  output_string="${output_string}${extract}${TAB}"
+  if [ -s $HEADER ] ; then
+    extract=`jq -r ".$field" $HEADER`
+    output_string="${output_string}${extract}${TAB}"
+  else
+    output_string="${output_string}${TAB}"
+  fi
 done
 
 for field in	\
@@ -43,8 +47,12 @@ for field in	\
     address.formatted   address.street_address address.locality 	\
     address.regionality address.postal_code    address.country 	\
    ; do
-  extract=`jq -r ".$field" $PAYLOAD`
-  output_string="${output_string}${extract}${TAB}"
+  if [ -s $PAYLOAD ] ; then
+    extract=`jq -r ".$field" $PAYLOAD`
+    output_string="${output_string}${extract}${TAB}"
+  else
+    output_string="${output_string}${TAB}"
+  fi
 done
 
 echo "$output_string" > $OUTPUT

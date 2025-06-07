@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 # Script extracts ID token values from request.xml files.
 
