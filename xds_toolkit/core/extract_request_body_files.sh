@@ -96,5 +96,8 @@ for folder in $TRANSACTION_FOLDER/* ; do
  echo "cp $tmp_file $OUTPUT_FOLDER/$time_stamp/request.xml"
        cp $tmp_file $OUTPUT_FOLDER/$time_stamp/request.xml
 
+ echo rm -f $tmp_file
+      rm -f $tmp_file
+
 done
 

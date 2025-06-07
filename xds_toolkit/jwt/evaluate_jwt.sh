@@ -123,5 +123,6 @@ done < $RULES
 echo ""
 cat $LOG
 echo Error Status $error_status
+rm -f $LOG
 exit $error_status
 
