@@ -110,6 +110,7 @@ def inspect_06(jwt_string:str, header:{}, payload:{}) -> None:
         print(f"{function_name} PASS {openid_configuration.decode('utf-8')}")
 
 # Check for required claims in OpenID Provider Metadata
+# See https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig
 def inspect_07(jwt_string:str, header:{}, payload:{}) -> None:
     function_name = sys._getframe().f_code.co_name
 
@@ -121,11 +122,80 @@ def inspect_07(jwt_string:str, header:{}, payload:{}) -> None:
     required_claims = ['issuer', 'authorization_endpoint', 'jwks_uri', 'response_types_supported', 'subject_types_supported', 'id_token_signing_alg_values_supported']
     for claim in required_claims:
         if claim not in provider_claims:
-            print(f"{function_name} ERROR OpenID required claim missing {claim}")
+            print(f"{function_name} ERROR OpenID required claim missing: {claim}")
         else:
             provider_claim = provider_claims[claim]
-            print(f"{function_name} PASS Payload OpenID claim key   {claim}")
-            print(f"{function_name} PASS Payload OpenID claim value {provider_claim}")
+            print(f"{function_name} PASS Payload OpenID required claim key   {claim}")
+            print(f"{function_name} PASS Payload OpenID required claim value {provider_claim}")
+
+
+# Check for recommended claims in OpenID Provider Metadata
+# See https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig
+def inspect_08(jwt_string:str, header:{}, payload:{}) -> None:
+    function_name = sys._getframe().f_code.co_name
+
+    iss = payload['iss']
+    url = f"{iss}/.well-known/openid-configuration"
+    openid_configuration = urllib.request.urlopen(url).read()
+    provider_claims = json.loads(openid_configuration)
+
+    recommended_claims = ['userinfo_endpoint', 'claims_supported']
+    for claim in recommended_claims:
+        if claim not in provider_claims:
+            print(f"{function_name} WARNING OpenID recommended claim missing: {claim}")
+        else:
+            provider_claim = provider_claims[claim]
+            print(f"{function_name} PASS Payload OpenID recommended claim key   {claim}")
+            print(f"{function_name} PASS Payload OpenID recommended claim value {provider_claim}")
+
+# Check for optional claims in OpenID Provider Metadata
+# See https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig
+def inspect_09(jwt_string:str, header:{}, payload:{}) -> None:
+    function_name = sys._getframe().f_code.co_name
+
+    iss = payload['iss']
+    url = f"{iss}/.well-known/openid-configuration"
+    openid_configuration = urllib.request.urlopen(url).read()
+    provider_claims = json.loads(openid_configuration)
+
+    optional_claims = ['response_modes_supported', 'grant_types_supported',
+                       'acr_values_supported', 'id_token_encryption_alg_values_supported',
+                       'id_token_encryption_enc_values_supported', 'userinfo_signing_alg_values_supported',
+                       'userinfo_encryption_alg_values_supported', 'userinfo_encryption_enc_values_supported',
+                       'request_object_signing_alg_values_supported', 'request_object_encryption_alg_values_supported',
+                       'request_object_encryption_enc_values_supported', 'token_endpoint_auth_methods_supported',
+                       'token_endpoint_auth_signing_alg_values_supported', 'display_values_supported',
+                       'claim_types_supported', 'service_documentation',
+                       'claims_locales_supported', 'ui_locales_supported',
+                       'claims_parameter_supported', 'request_parameter_supported',
+                       'request_uri_parameter_supported', 'require_request_uri_registration',
+                       'op_policy_uri', 'op_tos_uri']
+    for claim in optional_claims:
+        if claim not in provider_claims:
+            print(f"{function_name} WARNING OpenID optional claim missing: {claim}")
+        else:
+            provider_claim = provider_claims[claim]
+            print(f"{function_name} PASS Payload OpenID optional claim key   {claim}")
+            print(f"{function_name} PASS Payload OpenID optional claim value {provider_claim}")
+
+# Check for conditional claims in OpenID Provider Metadata
+# See https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderConfig
+def inspect_10(jwt_string:str, header:{}, payload:{}) -> None:
+    function_name = sys._getframe().f_code.co_name
+
+    iss = payload['iss']
+    url = f"{iss}/.well-known/openid-configuration"
+    openid_configuration = urllib.request.urlopen(url).read()
+    provider_claims = json.loads(openid_configuration)
+
+    condiitonal_claims = ['token_endpoint']
+    for claim in condiitonal_claims:
+        if claim not in condiitonal_claims:
+            print(f"{function_name} WARNING OpenID conditional claim missing: {claim}")
+        else:
+            provider_claim = provider_claims[claim]
+            print(f"{function_name} PASS Payload OpenID conditional claim key   {claim}")
+            print(f"{function_name} PASS Payload OpenID conditional claim value {provider_claim}")
 
 
 def main_inspect():
@@ -139,6 +209,9 @@ def main_inspect():
     inspect_05(jwt_string, header, payload)
     inspect_06(jwt_string, header, payload)
     inspect_07(jwt_string, header, payload)
+    inspect_08(jwt_string, header, payload)
+    inspect_09(jwt_string, header, payload)
+    inspect_10(jwt_string, header, payload)
 
 if __name__ == "__main__":
     main_inspect()
